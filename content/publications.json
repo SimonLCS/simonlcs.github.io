@@ -1,0 +1,109 @@
+[
+  {
+    "title": "Importance Sampling of the Micrograin Visible NDF",
+    "kind": "Conference paper",
+    "venue": "EGSR 2025, Computer Graphics Forum",
+    "authors": ["Simon Lucas", "Romain Pacanowski", "Pascal Barla"],
+    "abstract": "Importance sampling of visible normal distribution functions is a required ingredient for efficient rendering of microfacet-based materials. This work derives analytic expressions for marginal and conditional CDFs of the micrograin visible NDF and provides practical inversion methods based on a 2D lookup table and triangle-cut sampling.",
+    "image": "https://simon-lucas.fr/wp-content/uploads/2025/06/rep_img_egsr2025-1024x320.jpg",
+    "imageAlt": "Teaser image for importance sampling of the micrograin visible NDF",
+    "links": [
+      {
+        "label": "Paper and code",
+        "url": "https://diglib.eg.org/items/18f74b0f-95fb-4fe1-a562-82eb38f89fff"
+      }
+    ]
+  },
+  {
+    "title": "A Micrograin Formalism for the Rendering of Porous Materials",
+    "kind": "Thesis",
+    "venue": "PhD thesis, 2024",
+    "authors": ["Simon Lucas"],
+    "abstract": "This thesis studies the impact of microscopic structures on material appearance, with emphasis on porous materials. It evaluates existing models through light transport simulations and develops a BSDF model for porous layers such as dust, rust, and dirt, including effects such as retro-reflection and height-color correlations.",
+    "image": "https://simon-lucas.fr/wp-content/uploads/2025/02/cap_these.png",
+    "imageAlt": "Thesis cover preview",
+    "links": [
+      {
+        "label": "HAL version",
+        "url": "https://theses.hal.science/tel-04904484"
+      }
+    ]
+  },
+  {
+    "title": "A Fully-correlated Anisotropic Micrograin BSDF Model",
+    "kind": "Journal paper",
+    "venue": "SIGGRAPH 2024, ACM Transactions on Graphics",
+    "authors": ["Simon Lucas", "Mickael Ribardiere", "Romain Pacanowski", "Pascal Barla"],
+    "abstract": "This paper introduces an anisotropic micrograin BSDF model for porous layers. The model accounts for height-normal correlations and light-view correlations to derive an exact analytical geometrical attenuation factor, producing porous-layer effects such as grazing-angle retro-reflection and height-color correlation.",
+    "image": "https://simon-lucas.fr/wp-content/uploads/2024/05/rep_image_sig-1024x368.jpg",
+    "imageAlt": "Rendered porous material results for the SIGGRAPH 2024 micrograin BSDF paper",
+    "links": [
+      {
+        "label": "Author version",
+        "url": "https://hal.science/hal-04567402"
+      }
+    ]
+  },
+  {
+    "title": "A Micrograin BSDF Model for the Rendering of Porous Layers",
+    "kind": "Conference paper",
+    "venue": "SIGGRAPH Asia 2023, Conference Track",
+    "authors": ["Simon Lucas", "Mickael Ribardiere", "Romain Pacanowski", "Pascal Barla"],
+    "abstract": "This work introduces a BSDF model for rendering porous layers such as dust, rust, dirt, and sprayed paint. It extends GGX to account for pores between elliptical opaque micrograins and derives an NDF, GAF, and view-light dependent filling factor for blending porous and base layers.",
+    "image": "https://simon-lucas.fr/wp-content/uploads/2023/09/rep_image-1024x683.jpg",
+    "imageAlt": "Teaser render for the SIGGRAPH Asia 2023 micrograin BSDF model",
+    "links": [
+      {
+        "label": "Author version",
+        "url": "https://hal.science/hal-04220006"
+      },
+      {
+        "label": "Demo page",
+        "url": "https://simon-lucas.fr/demo/demo.html"
+      }
+    ]
+  },
+  {
+    "title": "Analyse Numerique de Modeles de Materiaux Poreux",
+    "kind": "Workshop paper",
+    "venue": "JFIG 2022",
+    "award": "3rd Best Paper Award",
+    "authors": ["Simon Lucas", "Romain Pacanowski", "Pascal Barla"],
+    "abstract": "This work studies the appearance of porous materials through light transport simulations. The analysis reveals limitations of existing models and suggests directions toward a more general material model that accounts for porosity and surface-state variation.",
+    "image": "https://simon-lucas.fr/wp-content/uploads/2023/09/teaser_jfig-1024x365.jpg",
+    "imageAlt": "Teaser image for porous material numerical analysis",
+    "links": [
+      {
+        "label": "Author version",
+        "url": "https://hal.science/hal-03952096"
+      }
+    ]
+  },
+  {
+    "title": "Real-Time Geometric Glint Anti-Aliasing with Normal Map Filtering",
+    "kind": "Conference paper",
+    "venue": "I3D 2021",
+    "authors": ["Xavier Chermain", "Simon Lucas", "Basile Sauvage", "Jean-Michel Dischler", "Carsten Dachsbacher"],
+    "abstract": "This paper presents a real-time geometric glint anti-aliasing method for multi-lobe BRDFs. It uses GPU texture filtering to filter slope distributions on the fly and makes glint rendering compatible with normal map filtering using LEAN mapping.",
+    "image": "https://simon-lucas.fr/wp-content/uploads/2021/03/i3D2021-1024x395.png",
+    "imageAlt": "Rendered glint anti-aliasing comparison for I3D 2021",
+    "links": [
+      {
+        "label": "Author version",
+        "url": "http://igg.unistra.fr/People/chermain/assets/pdf/Chermain2021RealTime.pdf"
+      },
+      {
+        "label": "Project page",
+        "url": "http://igg.unistra.fr/People/chermain/glint_anti_aliasing/"
+      },
+      {
+        "label": "Video",
+        "url": "http://igg.unistra.fr/People/chermain/assets/mp4/i3D2021SupplementalVideo.mp4"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/ASTex-ICube/aa_real_time_glint"
+      }
+    ]
+  }
+]

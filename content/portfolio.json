@@ -1,0 +1,114 @@
+[
+  {
+    "title": "LilTracer",
+    "year": "2021",
+    "description": "A small GPU path tracer built for a university project. The renderer runs with OpenGL and sends scene data such as BVHs, meshes, and materials to the GPU through textures.",
+    "tags": ["OpenGL", "Path tracing"],
+    "images": [
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2023/10/titlepic.png-768x768.png",
+        "alt": "LilTracer rendered scene"
+      }
+    ],
+    "links": []
+  },
+  {
+    "title": "Oeuf de Faberge",
+    "year": "2020",
+    "description": "Best shader at the JFIG 2020 Shadertoy rendering contest, organized by the French computer graphics association AFIG.",
+    "tags": ["Shader", "Shadertoy"],
+    "images": [
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/faberge_egg-768x432.png",
+        "alt": "Faberge egg shader render"
+      }
+    ],
+    "links": [
+      {
+        "label": "Shadertoy",
+        "url": "https://www.shadertoy.com/view/3scBD7"
+      },
+      {
+        "label": "Contest",
+        "url": "https://jfig2020.sciencesconf.org/resource/page/id/1"
+      },
+      {
+        "label": "Slides",
+        "url": "https://simon-lucas.fr/wp-content/uploads/2020/11/Presentation_JFIG_Simon_LUCAS.pdf"
+      }
+    ]
+  },
+  {
+    "title": "Analytic Normal Filtering from Sum of Cosines",
+    "year": "2020",
+    "description": "A method to extract anti-aliased normals from a sum of cosine functions with varying amplitude, frequency, and phase.",
+    "tags": ["Filtering", "Shader"],
+    "images": [
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/filtering_normal_map1-768x432.png",
+        "alt": "Filtered normal map result"
+      },
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/filtering_normal_map2-768x432.png",
+        "alt": "Normal filtering comparison"
+      }
+    ],
+    "links": [
+      {
+        "label": "Shadertoy",
+        "url": "https://www.shadertoy.com/view/ts3BWn"
+      }
+    ]
+  },
+  {
+    "title": "Filtering Color Mapped Textures and Surfaces",
+    "year": "2020",
+    "description": "Course research work implementing the filtering method from Heitz et al. for color-mapped textures and surfaces.",
+    "tags": ["Texture filtering", "Research implementation"],
+    "images": [
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/filt_colormapped.png",
+        "alt": "Color mapped texture filtering result"
+      }
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://hal.inria.fr/hal-00765799/"
+      },
+      {
+        "label": "Shadertoy",
+        "url": "https://www.shadertoy.com/view/WdScDW"
+      },
+      {
+        "label": "Report",
+        "url": "https://simon-lucas.fr/wp-content/uploads/2020/11/Rapport_TER.pdf"
+      }
+    ]
+  },
+  {
+    "title": "First OpenGL Application",
+    "year": "2020",
+    "description": "A 3D programming project with deferred rendering, GGX BRDFs, normal mapping, Assimp loading, and an ImGui-based interface.",
+    "tags": ["C++", "OpenGL"],
+    "images": [
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/pbr1-1024x605.png",
+        "alt": "OpenGL physically based rendering scene"
+      },
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/pbr2-1024x605.png",
+        "alt": "OpenGL rendered material preview"
+      },
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/pbr3-1024x605.png",
+        "alt": "OpenGL application screenshot"
+      },
+      {
+        "src": "https://simon-lucas.fr/wp-content/uploads/2020/11/pbr4-1024x605.png",
+        "alt": "OpenGL deferred rendering result"
+      }
+    ],
+    "links": []
+  }
+]

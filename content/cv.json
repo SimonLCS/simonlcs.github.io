@@ -1,0 +1,76 @@
+{
+  "experience": [
+    {
+      "date": "2025 - present",
+      "title": "Postdoctoral Researcher",
+      "place": "Inria Sophia-Antipolis, GraphDeco team",
+      "details": ["Physically based rendering", "Light transport", "Real-time rendering"]
+    },
+    {
+      "date": "2021 - 2024",
+      "title": "PhD Student",
+      "place": "Inria Bordeaux, Manao team, University of Bordeaux",
+      "details": ["Appearance modeling for porous materials", "Physically based rendering"]
+    },
+    {
+      "date": "September 2020 - August 2021",
+      "title": "Apprenticeship",
+      "place": "ICube laboratory, University of Strasbourg",
+      "details": ["Real-time rendering of glints", "Procedural texture generation"]
+    },
+    {
+      "date": "July 2019 - August 2019",
+      "title": "Third-year Internship",
+      "place": "United Visual Researchers, Paris",
+      "details": ["BRDF fitting", "Shader programming in Unity"]
+    },
+    {
+      "date": "June 2017 - July 2017",
+      "title": "First-year Internship",
+      "place": "OPEX MEDIA / USE TOGETHER, Reims",
+      "details": ["RPM package automation on CentOS 7", "Beta testing"]
+    }
+  ],
+  "education": [
+    {
+      "date": "2019 - 2021",
+      "title": "Master in Computer Science, Image and 3D",
+      "place": "University of Strasbourg",
+      "details": ["Engineering degree in computer graphics, virtual reality, interactions, and games"]
+    },
+    {
+      "date": "2016 - 2019",
+      "title": "Bachelor in Computer Science",
+      "place": "University of Strasbourg",
+      "details": []
+    },
+    {
+      "date": "2016",
+      "title": "Scientific Baccalaureat",
+      "place": "Lycee Marc Chagall, Reims",
+      "details": ["Mention Good", "English European section"]
+    }
+  ],
+  "sidebars": [
+    {
+      "title": "Reviewing",
+      "items": ["SIGGRAPH 2024", "I3D 2024"]
+    },
+    {
+      "title": "Skills",
+      "items": ["Python, C++, C", "OpenGL, GLSL", "OptiX / CUDA", "Compute shaders", "Ray tracing", "Physically based rendering", "Procedural rendering", "Implicit surfaces", "Deep learning"]
+    },
+    {
+      "title": "Languages",
+      "items": ["French, native", "English"]
+    },
+    {
+      "title": "Awards",
+      "items": ["JFIG 2022, 3rd Best Paper Award", "JFIG 2020, Best shader at Shadertoy rendering contest", "Nuit de l'Informatique 2018 awards"]
+    },
+    {
+      "title": "Interests",
+      "items": ["Climbing", "Archery", "Video games", "Coding and 3D rendering"]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+[
+  {
+    "date": "2025-06-01",
+    "displayDate": "June 2025",
+    "category": "Paper",
+    "title": "EGSR 2025 paper accepted",
+    "description": "Importance Sampling of the Micrograin Visible NDF will appear at EGSR 2025 in Computer Graphics Forum.",
+    "links": [
+      {
+        "label": "Paper and code",
+        "url": "https://diglib.eg.org/items/18f74b0f-95fb-4fe1-a562-82eb38f89fff"
+      }
+    ]
+  },
+  {
+    "date": "2025-01-01",
+    "displayDate": "2025",
+    "category": "Position",
+    "title": "Postdoctoral researcher at Inria Sophia-Antipolis",
+    "description": "I joined the GraphDeco team, working on light transport and appearance modeling for real-time rendering.",
+    "links": [
+      {
+        "label": "CV",
+        "url": "./cv.html"
+      }
+    ]
+  },
+  {
+    "date": "2025-02-01",
+    "displayDate": "February 2025",
+    "category": "Thesis",
+    "title": "PhD thesis available on HAL",
+    "description": "A Micrograin Formalism for the Rendering of Porous Materials is available online.",
+    "links": [
+      {
+        "label": "HAL version",
+        "url": "https://theses.hal.science/tel-04904484"
+      }
+    ]
+  },
+  {
+    "date": "2024-05-01",
+    "displayDate": "May 2024",
+    "category": "Paper",
+    "title": "SIGGRAPH 2024 paper",
+    "description": "A Fully-correlated Anisotropic Micrograin BSDF Model was published in ACM Transactions on Graphics.",
+    "links": [
+      {
+        "label": "Author version",
+        "url": "https://hal.science/hal-04567402"
+      }
+    ]
+  }
+]

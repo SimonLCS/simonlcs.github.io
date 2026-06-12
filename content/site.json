@@ -1,0 +1,22 @@
+{
+  "title": "Simon Lucas - Computer Graphics Researcher",
+  "role": "Postdoctoral Researcher in Computer Graphics",
+  "summary": "I work on light transport and appearance modeling, with a focus on physically based material models that remain useful for real-time rendering.",
+  "bio": "I am a postdoctoral researcher at Inria Sophia-Antipolis in the GraphDeco team. My research explores how microscopic structure shapes material appearance, from porous layers and micrograin models to efficient sampling for real-time and physically based rendering.",
+  "portrait": "https://simon-lucas.fr/wp-content/uploads/2020/11/photo_moi-e1606601269958-768x817.jpg",
+  "portraitAlt": "Portrait of Simon Lucas",
+  "links": [
+    {
+      "label": "Email",
+      "url": "mailto:simon.lucas@inria.fr"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/SimonLUCAS_CG"
+    },
+    {
+      "label": "Shadertoy",
+      "url": "https://www.shadertoy.com/user/SimonL"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Simon Lucas, computer graphics researcher working on light transport, appearance modeling, and real-time rendering.">
+    <meta name="theme-color" content="#f7f8f3">
+    <title>Simon Lucas - Computer Graphics Researcher</title>
+    <link rel="preconnect" href="https://simon-lucas.fr">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script type="module" src="./assets/app.js"></script>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Primary navigation">
+        <a class="brand" href="./index.html" aria-label="Simon Lucas home">
+          <span class="brand-mark" aria-hidden="true">SL</span>
+          <span>Simon Lucas</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+          <a data-nav="papers" href="./publications.html">Papers</a>
+          <a data-nav="cv" href="./cv.html">CV</a>
+          <a data-nav="portfolio" href="./portfolio.html">Portfolio</a>
+          <a href="./index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section" aria-labelledby="hero-title">
+        <div class="hero-grid shell">
+          <div class="hero-copy">
+            <p class="eyebrow" data-profile-role>Computer Graphics Researcher</p>
+            <h1 id="hero-title">Simon Lucas</h1>
+            <p class="hero-lede" data-profile-summary>
+              Postdoctoral researcher in computer graphics, working on light transport and appearance modeling for real-time rendering.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="./publications.html">Read the papers</a>
+              <a class="button secondary" href="./portfolio.html">View projects</a>
+            </div>
+          </div>
+
+          <aside class="latest-panel" aria-labelledby="latest-title">
+            <div class="panel-head">
+              <p class="section-kicker">Latest</p>
+              <h2 id="latest-title">News and updates</h2>
+            </div>
+            <div class="news-list compact" data-news-preview></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="shell intro-grid">
+          <div>
+            <p class="section-kicker">Research focus</p>
+            <h2>Appearance models that connect physical structure to rendered images.</h2>
+          </div>
+          <p data-profile-bio>
+            I work on physically based rendering, microstructure-driven material appearance, and efficient sampling methods for graphics.
+          </p>
+        </div>
+      </section>
+
+      <section class="section contact-band" id="contact" aria-labelledby="contact-title">
+        <div class="shell contact-grid">
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2 id="contact-title">Let's talk graphics.</h2>
+          </div>
+          <div class="contact-links" data-contact></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>&copy; <span data-year></span> Simon Lucas</p>
+        <a href="./index.html">Home</a>
+      </div>
+    </footer>
+  </body>
+</html>

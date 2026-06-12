@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio projects by Simon Lucas.">
+    <meta name="theme-color" content="#f7f8f3">
+    <title>Portfolio - Simon Lucas</title>
+    <link rel="preconnect" href="https://simon-lucas.fr">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script type="module" src="./assets/app.js"></script>
+  </head>
+  <body data-page="portfolio">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Primary navigation">
+        <a class="brand" href="./index.html" aria-label="Simon Lucas home">
+          <span class="brand-mark" aria-hidden="true">SL</span>
+          <span>Simon Lucas</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a data-nav="papers" href="./publications.html">Papers</a>
+          <a data-nav="cv" href="./cv.html">CV</a>
+          <a data-nav="portfolio" href="./portfolio.html">Portfolio</a>
+          <a href="./index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="shell page-hero-grid">
+          <div>
+            <p class="eyebrow">Visual work</p>
+            <h1>Portfolio</h1>
+          </div>
+          <p>Rendering experiments, Shadertoy work, graphics programming projects, and small research implementations.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell portfolio-grid" data-portfolio></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>&copy; <span data-year></span> Simon Lucas</p>
+        <div class="footer-links" data-contact></div>
+      </div>
+    </footer>
+  </body>
+</html>
