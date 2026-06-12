@@ -68,19 +68,48 @@ function publicationCard(publication) {
         </div>
         <h2>${escapeHtml(publication.title)}</h2>
         <p class="authors">${escapeHtml(publication.authors.join(", "))}</p>
-        <p class="abstract">${escapeHtml(publication.abstract)}</p>
         <div class="card-links">${linkMarkup(publication.links)}</div>
       </div>
-      <a class="publication-media" href="${escapeHtml(publication.links?.[0]?.url || "#")}" target="_blank" rel="noreferrer" aria-label="Open ${escapeHtml(publication.title)}">
-        <img src="${escapeHtml(publication.image)}" alt="${escapeHtml(publication.imageAlt)}" loading="lazy">
-      </a>
+      <div class="publication-extra" hidden>
+        <p class="abstract">${escapeHtml(publication.abstract)}</p>
+        <a class="publication-media" href="${escapeHtml(publication.links?.[0]?.url || "#")}" target="_blank" rel="noreferrer" aria-label="Open ${escapeHtml(publication.title)}">
+          <img data-src="${escapeHtml(publication.image)}" alt="${escapeHtml(publication.imageAlt)}" loading="lazy">
+        </a>
+      </div>
     </article>
   `;
 }
 
 function renderPublications(publications) {
   const target = $("[data-publications]");
-  if (target) target.innerHTML = publications.map(publicationCard).join("");
+  if (!target) return;
+
+  target.innerHTML = publications.map(publicationCard).join("");
+  setupPublicationToggle(target);
+}
+
+function setupPublicationToggle(target) {
+  const toggle = $("[data-publication-toggle]");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", () => {
+    target.classList.toggle("is-expanded");
+    const isExpanded = target.classList.contains("is-expanded");
+
+    $$("[data-publications] .publication-extra").forEach((extra) => {
+      extra.hidden = !isExpanded;
+    });
+
+    if (isExpanded) {
+      $$("[data-publications] img[data-src]").forEach((image) => {
+        image.src = image.dataset.src;
+        image.removeAttribute("data-src");
+      });
+    }
+
+    toggle.setAttribute("aria-pressed", String(isExpanded));
+    toggle.textContent = isExpanded ? "Hide abstracts and images" : "Show abstracts and images";
+  });
 }
 
 function newsItem(item) {
@@ -149,6 +178,7 @@ function renderCv(cv) {
       ${timelineSection("Studies", cv.education)}
     </div>
     <aside class="cv-sidebar">
+      <h2 class="cv-sidebar-title">Misc</h2>
       ${cv.sidebars.map(cvPanel).join("")}
     </aside>
   `;

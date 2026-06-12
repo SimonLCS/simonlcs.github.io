@@ -404,13 +404,19 @@ h3 {
 
 .publication-list {
   display: grid;
-  gap: 22px;
+  gap: 14px;
+}
+
+.publication-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
 }
 
 .publication-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 36%);
-  gap: clamp(18px, 4vw, 48px);
+  grid-template-columns: 1fr;
+  gap: 0;
   overflow: hidden;
 }
 
@@ -427,6 +433,22 @@ h3 {
   margin-bottom: 10px;
   font-size: clamp(1.35rem, 2.8vw, 2.2rem);
   line-height: 1.05;
+}
+
+.publication-extra {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 34%);
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  padding: 0 24px 24px;
+}
+
+.publication-extra[hidden] {
+  display: none;
+}
+
+.publication-list.is-expanded {
+  gap: 22px;
 }
 
 .meta-line {
@@ -500,6 +522,16 @@ h3 {
 
 .cv-section > h2 {
   margin-bottom: 16px;
+  color: var(--accent-strong);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cv-sidebar-title {
+  margin-bottom: -2px;
   color: var(--accent-strong);
   font-family: var(--mono);
   font-size: 0.9rem;
@@ -631,11 +663,23 @@ h3 {
   }
 
   .publication-media {
-    order: -1;
+    order: 0;
   }
 
   .publication-media img {
     min-height: 220px;
+  }
+
+  .publication-toolbar {
+    justify-content: stretch;
+  }
+
+  .publication-toolbar .button {
+    width: 100%;
+  }
+
+  .publication-extra {
+    grid-template-columns: 1fr;
   }
 }
 
