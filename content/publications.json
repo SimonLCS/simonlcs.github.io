@@ -1,7 +1,45 @@
 [
   {
+    "title": "Intrinsic decomposition and editing of 3D Gaussian splats",
+    "kind": "Journal paper",
+    "venue": "Proceedings of the ACM on Computer Graphics and Interactive Techniques, 2026",
+    "authors": ["Alexandre Lanvin", "Simon Lucas", "Jeffrey Hu", "Adrien Bousseau", "George Drettakis"],
+    "abstract": "This paper extends intrinsic decomposition to radiance fields represented with Gaussian splatting. It models albedo, shading, and residuals as independent sets of Gaussian primitives, optimizes these layers from multi-view photographs, and enables plausible, multi-view consistent albedo editing of 3D Gaussian splats.",
+    "image": "https://thumb.ccsd.cnrs.fr/9913424/large",
+    "imageAlt": "First-page illustration for Intrinsic decomposition and editing of 3D Gaussian splats",
+    "links": [
+      {
+        "label": "HAL version",
+        "url": "https://hal.science/hal-05602203v1"
+      },
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.1145/3804495"
+      }
+    ]
+  },
+  {
+    "title": "A Discrete Polydisperse Anisotropic BSDF Model based on the Micrograin Framework",
+    "kind": "Journal paper",
+    "venue": "Computer Graphics Forum, 2026",
+    "authors": ["Kewei Xu", "Simon Lucas", "Mickael Ribardiere", "Benjamin Bringier", "Pascal Barla"],
+    "abstract": "This paper introduces a discrete polydisperse micrograin BSDF model for porous surface materials made of microscopic elements with different size, shape, and reflectance. The model generalizes the anisotropic monodisperse micrograin framework, derives a filling factor, normal distribution function, shadowing and masking term, and includes a dedicated importance sampling procedure.",
+    "image": "https://thumb.ccsd.cnrs.fr/9907542/large",
+    "imageAlt": "HAL thumbnail for A Discrete Polydisperse Anisotropic BSDF Model based on the Micrograin Framework",
+    "links": [
+      {
+        "label": "HAL version",
+        "url": "https://hal.science/hal-05574460v2"
+      },
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.1111/cgf.70387"
+      }
+    ]
+  },
+  {
     "title": "Importance Sampling of the Micrograin Visible NDF",
-    "kind": "Conference paper",
+    "kind": "Journal paper",
     "venue": "EGSR 2025, Computer Graphics Forum",
     "authors": ["Simon Lucas", "Romain Pacanowski", "Pascal Barla"],
     "abstract": "Importance sampling of visible normal distribution functions is a required ingredient for efficient rendering of microfacet-based materials. This work derives analytic expressions for marginal and conditional CDFs of the micrograin visible NDF and provides practical inversion methods based on a 2D lookup table and triangle-cut sampling.",
