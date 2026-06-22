@@ -57,9 +57,15 @@ function renderSite(site) {
   });
 }
 
-function publicationCard(publication) {
+function publicationYear(publication) {
+  return publication.venue.match(/\b(?:19|20)\d{2}\b/)?.[0] || "—";
+}
+
+function publicationCard(publication, index) {
+  const publicationId = `publication-${index + 1}`;
+
   return `
-    <article class="publication-card">
+    <article class="publication-card" id="${publicationId}" data-publication-card>
       <div class="publication-body">
         <div class="publication-copy">
           <div class="meta-line">
@@ -83,11 +89,96 @@ function publicationCard(publication) {
   `;
 }
 
+function publicationIndexGroups(publications) {
+  return publications.reduce((groups, publication, index) => {
+    const year = publicationYear(publication);
+    const group = groups.find((item) => item.year === year);
+    const item = { publication, index };
+
+    if (group) {
+      group.items.push(item);
+    } else {
+      groups.push({ year, items: [item] });
+    }
+
+    return groups;
+  }, []);
+}
+
 function renderPublications(publications) {
   const target = $("[data-publications]");
   if (!target) return;
 
-  target.innerHTML = publications.map(publicationCard).join("");
+  const groups = publicationIndexGroups(publications);
+
+  target.innerHTML = `
+    <div class="publications-layout">
+      <aside class="publication-index" aria-label="Publication overview">
+        <div class="publication-index-sticky">
+          <p class="publication-index-label">Publication map</p>
+          <nav aria-label="Jump to a publication">
+            <div class="publication-index-groups">
+              ${groups.map((group) => `
+                <section class="publication-index-group" aria-labelledby="publication-year-${escapeHtml(group.year)}">
+                  <h2 id="publication-year-${escapeHtml(group.year)}">${escapeHtml(group.year)}</h2>
+                  <ol class="publication-index-list">
+                    ${group.items.map(({ publication, index }) => `
+                      <li>
+                        <a href="#publication-${index + 1}" data-publication-index="${index}" aria-label="${escapeHtml(group.year)} — ${escapeHtml(publication.title)}">
+                          <span class="publication-index-title">${escapeHtml(publication.title)}</span>
+                        </a>
+                      </li>
+                    `).join("")}
+                  </ol>
+                </section>
+              `).join("")}
+            </div>
+          </nav>
+        </div>
+      </aside>
+      <div class="publication-cards">
+        ${publications.map(publicationCard).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function setupPublicationNavigator() {
+  const cards = $$('[data-publication-card]');
+  const links = $$('[data-publication-index]');
+  if (!cards.length || !links.length) return;
+
+  let activeIndex = -1;
+
+  const setActivePublication = (index) => {
+    if (index === activeIndex) return;
+    activeIndex = index;
+
+    links.forEach((link, linkIndex) => {
+      const isCurrent = linkIndex === index;
+      link.classList.toggle("is-current", isCurrent);
+      if (isCurrent) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const updateActivePublication = () => {
+    const readingLine = window.innerHeight * 0.38;
+    let index = 0;
+
+    cards.forEach((card, cardIndex) => {
+      if (card.getBoundingClientRect().top <= readingLine) index = cardIndex;
+    });
+
+    setActivePublication(index);
+  };
+
+  window.addEventListener("scroll", updateActivePublication, { passive: true });
+  window.addEventListener("resize", updateActivePublication);
+  updateActivePublication();
 }
 
 function newsItem(item) {
@@ -238,6 +329,7 @@ async function init() {
     }
 
     await Promise.all(contentLoaders);
+    setupPublicationNavigator();
     setupNavigation();
   } catch (error) {
     console.error(error);

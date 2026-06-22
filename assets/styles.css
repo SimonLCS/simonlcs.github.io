@@ -403,7 +403,132 @@ h3 {
 }
 
 .publication-list {
+  position: relative;
+}
+
+.publications-layout {
+  display: block;
+}
+
+.publication-index {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: clamp(52px, calc((100vw - var(--shell)) / 2 - 24px), 215px);
+  height: 100%;
+  transform: translateX(-100%);
+}
+
+.publication-index-sticky {
+  position: sticky;
+  top: 96px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-color: var(--line) transparent;
+  scrollbar-width: thin;
+}
+
+.publication-index-label {
+  margin: 0 0 12px;
+  color: var(--accent-strong);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.publication-index-groups {
+  position: relative;
   display: grid;
+  gap: 12px;
+}
+
+.publication-index-groups::before {
+  position: absolute;
+  top: 29px;
+  bottom: 12px;
+  left: 5px;
+  width: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.publication-index-group h2 {
+  margin: 0 0 3px;
+  color: var(--accent-strong);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 760;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.publication-index-list {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.publication-index-list a {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding: 7px 6px 8px 19px;
+  border-radius: var(--radius);
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.publication-index-list a::before {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 1px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg);
+  content: "";
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.publication-index-list a:hover,
+.publication-index-list a:focus-visible {
+  background: var(--surface);
+  color: var(--ink);
+  outline: none;
+}
+
+.publication-index-list a.is-current {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.publication-index-list a.is-current::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.publication-index-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.78rem;
+  font-weight: 680;
+  line-height: 1.28;
+}
+
+.publication-cards {
+  display: grid;
+  min-width: 0;
   gap: 14px;
 }
 
@@ -412,6 +537,7 @@ h3 {
   grid-template-columns: 1fr;
   gap: 0;
   overflow: hidden;
+  scroll-margin-top: 96px;
 }
 
 .publication-body,
@@ -655,6 +781,7 @@ h3 {
   .contact-grid,
   .page-hero-grid,
   .section-head,
+  .publications-layout,
   .publication-card,
   .cv-layout,
   .portfolio-grid {
@@ -673,8 +800,74 @@ h3 {
     min-height: 220px;
   }
 
+  .publication-index-sticky {
+    position: static;
+    max-height: 250px;
+    margin-bottom: 10px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .publication-index {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+  }
+
   .publication-extra {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 841px) and (max-width: 1450px) {
+  .publication-index-title {
+    display: none;
+  }
+
+  .publication-index-list a {
+    min-height: 25px;
+    padding: 7px 0 8px 19px;
+  }
+
+  .publication-index-label {
+    font-size: 0.62rem;
+  }
+}
+
+@media (min-width: 841px) and (max-width: 1180px) {
+  .publication-index {
+    position: fixed;
+    z-index: 5;
+    top: 96px;
+    left: 6px;
+    width: 42px;
+    height: auto;
+    transform: none;
+  }
+
+  .publication-index-sticky {
+    position: static;
+    max-height: calc(100vh - 120px);
+    padding: 8px 4px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+  }
+
+  .publication-index-label {
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .publication-index-group h2 {
+    font-size: 0.62rem;
   }
 }
 
