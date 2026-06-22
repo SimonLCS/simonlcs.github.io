@@ -256,6 +256,7 @@ h3 {
 .button,
 .text-link,
 .card-links a,
+.abstract-toggle,
 .contact-links a,
 .footer-links a {
   display: inline-flex;
@@ -287,6 +288,7 @@ h3 {
 
 .button.secondary,
 .card-links a,
+.abstract-toggle,
 .contact-links a,
 .footer-links a,
 .text-link {
@@ -299,6 +301,7 @@ h3 {
 .button:hover,
 .text-link:hover,
 .card-links a:hover,
+.abstract-toggle:hover,
 .contact-links a:hover,
 .footer-links a:hover {
   transform: translate(-1px, -2px);
@@ -639,7 +642,8 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 34%);
   align-items: stretch;
-  gap: 24px;
+  column-gap: 24px;
+  row-gap: 16px;
 }
 
 .publication-copy {
@@ -662,15 +666,8 @@ h3 {
   padding: 0 24px;
 }
 
-.publication-extra summary {
-  cursor: pointer;
-  padding: 18px 0;
-  color: var(--ink);
-  font-weight: 700;
-}
-
-.publication-extra[open] {
-  padding-bottom: 24px;
+.publication-extra:not([hidden]) {
+  padding-block: 20px 24px;
 }
 
 .meta-line {
@@ -721,6 +718,8 @@ h3 {
 
 .publication-media {
   display: block;
+  grid-column: 2;
+  grid-row: 1 / span 2;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
@@ -731,6 +730,22 @@ h3 {
   position: absolute;
   inset: 0;
   min-height: 0;
+}
+
+.publication-actions {
+  grid-column: 1;
+}
+
+.publication-actions .card-links {
+  margin-top: 0;
+}
+
+.abstract-toggle {
+  cursor: pointer;
+  font: inherit;
+  min-height: 36px;
+  font-size: 0.9rem;
+  padding: 0 15px;
 }
 
 .card-links {
@@ -991,6 +1006,16 @@ h3 {
 
   .publication-body {
     grid-template-columns: 1fr;
+  }
+
+  .publication-media {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 220px;
+  }
+
+  .publication-actions {
+    grid-column: auto;
   }
 
   .portfolio-media {

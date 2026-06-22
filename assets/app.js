@@ -63,6 +63,7 @@ function publicationYear(publication) {
 
 function publicationCard(publication, index) {
   const publicationId = `publication-${index + 1}`;
+  const abstractId = `${publicationId}-abstract`;
 
   return `
     <article class="publication-card" id="${publicationId}" data-publication-card>
@@ -75,16 +76,20 @@ function publicationCard(publication, index) {
           </div>
           <h2>${escapeHtml(publication.title)}</h2>
           <p class="authors">${escapeHtml(publication.authors.join(", "))}</p>
-          <div class="card-links">${linkMarkup(publication.links)}</div>
         </div>
         <a class="publication-media" href="${escapeHtml(publication.links?.[0]?.url || "#")}" target="_blank" rel="noreferrer" aria-label="Open ${escapeHtml(publication.title)}">
           <img src="${escapeHtml(publication.image)}" alt="${escapeHtml(publication.imageAlt)}" loading="lazy">
         </a>
+        <div class="publication-actions">
+          <div class="card-links">
+            <button class="abstract-toggle" type="button" data-abstract-toggle aria-controls="${abstractId}" aria-expanded="false">Abstract</button>
+            ${linkMarkup(publication.links)}
+          </div>
+        </div>
       </div>
-      <details class="publication-extra">
-        <summary>Abstract</summary>
+      <div class="publication-extra" id="${abstractId}" hidden>
         <p class="abstract">${escapeHtml(publication.abstract)}</p>
-      </details>
+      </div>
     </article>
   `;
 }
@@ -179,6 +184,20 @@ function setupPublicationNavigator() {
   window.addEventListener("scroll", updateActivePublication, { passive: true });
   window.addEventListener("resize", updateActivePublication);
   updateActivePublication();
+}
+
+function setupAbstractToggles() {
+  $$('[data-abstract-toggle]').forEach((button) => {
+    const panel = document.getElementById(button.getAttribute("aria-controls"));
+    if (!panel) return;
+
+    button.addEventListener("click", () => {
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!isOpen));
+      button.textContent = isOpen ? "Abstract" : "Hide abstract";
+      panel.hidden = isOpen;
+    });
+  });
 }
 
 function newsItem(item) {
@@ -330,6 +349,7 @@ async function init() {
 
     await Promise.all(contentLoaders);
     setupPublicationNavigator();
+    setupAbstractToggles();
     setupNavigation();
   } catch (error) {
     console.error(error);
