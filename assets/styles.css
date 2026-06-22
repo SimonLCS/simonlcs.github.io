@@ -138,14 +138,25 @@ a {
   position: sticky;
   z-index: 10;
   top: 0;
-  border-bottom: 1px solid var(--line);
-  background: rgba(227, 231, 223, 0.82);
-  backdrop-filter: blur(18px) saturate(0.9);
+  border-bottom: 1px solid rgba(28, 37, 35, 0.12);
+  background: rgba(235, 237, 231, 0.76);
+  backdrop-filter: blur(18px) saturate(0.92);
+}
+
+.site-header::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 6%, rgba(226, 75, 72, 0.55) 34%, rgba(42, 162, 202, 0.52) 64%, transparent 94%);
+  content: "";
+  opacity: 0.58;
 }
 
 .nav {
   display: flex;
-  min-height: 72px;
+  min-height: 84px;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
@@ -158,15 +169,37 @@ a {
 }
 
 .brand {
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 40px auto;
+  column-gap: 10px;
+  row-gap: 0;
+  gap: 0 10px;
   font-weight: 760;
+  line-height: 1.05;
   text-decoration: none;
+}
+
+.brand > span:last-child {
+  grid-column: 2;
+}
+
+.brand::after {
+  grid-column: 2;
+  color: var(--muted);
+  content: "Computer graphics research";
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.25;
+  text-transform: uppercase;
 }
 
 .brand-mark {
   display: grid;
-  width: 36px;
-  height: 36px;
+  grid-row: 1 / span 2;
+  width: 40px;
+  height: 40px;
   place-items: center;
   border: 1px solid var(--accent);
   border-radius: 50%;
@@ -178,25 +211,52 @@ a {
 
 .nav-links {
   gap: 8px;
+  border: 1px solid rgba(28, 37, 35, 0.16);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.54);
+  box-shadow: -1px 0 0 rgba(226, 75, 72, 0.18), 1px 0 0 rgba(42, 162, 202, 0.16);
+  padding: 4px;
 }
 
 .nav-links a {
+  position: relative;
   border-radius: var(--radius);
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.82rem;
   font-weight: 700;
-  padding: 8px 11px;
+  padding: 9px 12px;
   text-decoration: none;
   text-transform: uppercase;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 9px;
+  bottom: 5px;
+  left: 9px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(226, 75, 72, 0.9), rgba(42, 162, 202, 0.9));
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.45);
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible,
 .nav-links a.is-active {
-  background: var(--ink);
+  background: linear-gradient(135deg, var(--ink), #344440);
   color: white;
   outline: none;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after,
+.nav-links a.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .nav-toggle {
@@ -972,7 +1032,7 @@ h3 {
 
   .nav-links {
     position: fixed;
-    inset: 72px 16px auto;
+    inset: 84px 16px auto;
     display: none;
     flex-direction: column;
     align-items: stretch;
@@ -980,6 +1040,10 @@ h3 {
     border-radius: var(--radius);
     background: var(--surface);
     padding: 8px;
+  }
+
+  .brand::after {
+    display: none;
   }
 
   body.nav-open .nav-links {
