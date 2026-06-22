@@ -524,6 +524,10 @@ h3 {
   top: 96px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 14px;
   padding-right: 10px;
   scrollbar-color: var(--line) transparent;
   scrollbar-width: thin;
@@ -929,6 +933,10 @@ h3 {
 }
 
 @media (min-width: 841px) and (max-width: 1450px) {
+  .publication-index-sticky {
+    padding: 8px 4px;
+  }
+
   .publication-index-title {
     display: none;
   }
