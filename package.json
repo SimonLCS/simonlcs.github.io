@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "check": "node --check assets/app.js && node --check server.mjs"
+    "check": "node --check assets/app.js && node --check server.mjs && node --check scripts/generate-contours.mjs",
+    "generate:contours": "node scripts/generate-contours.mjs"
   }
 }
