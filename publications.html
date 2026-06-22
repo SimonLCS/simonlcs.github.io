@@ -8,7 +8,8 @@
     <title>Papers - Simon Lucas</title>
     <link rel="preconnect" href="https://simon-lucas.fr">
     <link rel="stylesheet" href="./assets/styles.css">
-    <script type="module" src="./assets/app.js"></script>
+    <script src="./content/data.js"></script>
+    <script defer src="./assets/app.js"></script>
   </head>
   <body data-page="papers">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -45,11 +46,6 @@
       </section>
 
       <section class="section">
-        <div class="shell publication-toolbar">
-          <button class="button secondary" type="button" data-publication-toggle aria-pressed="false">
-            Show abstracts and images
-          </button>
-        </div>
         <div class="shell publication-list" data-publications></div>
       </section>
     </main>

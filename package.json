@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build-content": "node scripts/build-content.mjs",
+    "prestart": "npm run build-content",
     "start": "node server.mjs",
-    "check": "node --check assets/app.js && node --check server.mjs"
+    "check": "node scripts/build-content.mjs --check && node --check content/data.js && node --check assets/app.js && node --check server.mjs"
   }
 }

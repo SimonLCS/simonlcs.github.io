@@ -6,6 +6,8 @@ const contentFiles = {
   portfolio: "./content/portfolio.json"
 };
 
+const bundledContent = window.siteContent || {};
+
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -24,6 +26,12 @@ const linkMarkup = (links = []) =>
     .join("");
 
 async function loadJson(path) {
+  const key = path.split("/").pop()?.replace(".json", "");
+
+  if (window.location.protocol === "file:" && key && Object.hasOwn(bundledContent, key)) {
+    return bundledContent[key];
+  }
+
   const response = await fetch(path);
   if (!response.ok) {
     throw new Error(`Could not load ${path}`);
@@ -61,21 +69,24 @@ function publicationCard(publication) {
   return `
     <article class="publication-card">
       <div class="publication-body">
-        <div class="meta-line">
-          <span>${escapeHtml(publication.venue)}</span>
-          <span class="tag">${escapeHtml(publication.kind)}</span>
-          ${publication.award ? `<span class="tag loud">${escapeHtml(publication.award)}</span>` : ""}
+        <div class="publication-copy">
+          <div class="meta-line">
+            <span>${escapeHtml(publication.venue)}</span>
+            <span class="tag">${escapeHtml(publication.kind)}</span>
+            ${publication.award ? `<span class="tag loud">${escapeHtml(publication.award)}</span>` : ""}
+          </div>
+          <h2>${escapeHtml(publication.title)}</h2>
+          <p class="authors">${escapeHtml(publication.authors.join(", "))}</p>
+          <div class="card-links">${linkMarkup(publication.links)}</div>
         </div>
-        <h2>${escapeHtml(publication.title)}</h2>
-        <p class="authors">${escapeHtml(publication.authors.join(", "))}</p>
-        <div class="card-links">${linkMarkup(publication.links)}</div>
-      </div>
-      <div class="publication-extra" hidden>
-        <p class="abstract">${escapeHtml(publication.abstract)}</p>
         <a class="publication-media" href="${escapeHtml(publication.links?.[0]?.url || "#")}" target="_blank" rel="noreferrer" aria-label="Open ${escapeHtml(publication.title)}">
-          <img data-src="${escapeHtml(publication.image)}" alt="${escapeHtml(publication.imageAlt)}" loading="lazy">
+          <img src="${escapeHtml(publication.image)}" alt="${escapeHtml(publication.imageAlt)}" loading="lazy">
         </a>
       </div>
+      <details class="publication-extra">
+        <summary>Abstract</summary>
+        <p class="abstract">${escapeHtml(publication.abstract)}</p>
+      </details>
     </article>
   `;
 }
@@ -85,31 +96,6 @@ function renderPublications(publications) {
   if (!target) return;
 
   target.innerHTML = publications.map(publicationCard).join("");
-  setupPublicationToggle(target);
-}
-
-function setupPublicationToggle(target) {
-  const toggle = $("[data-publication-toggle]");
-  if (!toggle) return;
-
-  toggle.addEventListener("click", () => {
-    target.classList.toggle("is-expanded");
-    const isExpanded = target.classList.contains("is-expanded");
-
-    $$("[data-publications] .publication-extra").forEach((extra) => {
-      extra.hidden = !isExpanded;
-    });
-
-    if (isExpanded) {
-      $$("[data-publications] img[data-src]").forEach((image) => {
-        image.src = image.dataset.src;
-        image.removeAttribute("data-src");
-      });
-    }
-
-    toggle.setAttribute("aria-pressed", String(isExpanded));
-    toggle.textContent = isExpanded ? "Hide abstracts and images" : "Show abstracts and images";
-  });
 }
 
 function newsItem(item) {

@@ -1,6 +1,6 @@
 # Simon Lucas Website
 
-A small static website with no framework dependency. Papers, CV, and portfolio each have their own page, while content is edited in JSON files and rendered by a lightweight browser script.
+A small static website with no framework dependency. Papers, CV, and portfolio each have their own page, while content is edited in JSON files and rendered by a lightweight browser script. It also works when opened directly from `file://` in a browser.
 
 ## Local preview
 
@@ -25,6 +25,14 @@ npm run check
 - Portfolio projects: `content/portfolio.json`
 
 To add a publication, news item, talk, or portfolio item, copy an existing object, paste it into the same array, and edit the fields. Images can be remote URLs or local files placed in an `images/` folder.
+
+After editing a JSON file, run the following before opening an `.html` file directly in Firefox:
+
+```bash
+npm run build-content
+```
+
+This refreshes `content/data.js`, the local-file content bundle. `npm start` runs this automatically.
 
 Pages:
 

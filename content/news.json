@@ -4,7 +4,7 @@
     "displayDate": "May 2026",
     "category": "Paper",
     "title": "Gaussian splats intrinsic decomposition paper",
-    "description": "Intrinsic decomposition and editing of 3D Gaussian splats is available on HAL.",
+    "description": "Our paper Intrinsic decomposition and editing of 3D Gaussian splats has been accepted at PACMCGIT.",
     "links": [
       {
         "label": "HAL version",
@@ -17,7 +17,7 @@
     "displayDate": "March 2026",
     "category": "Paper",
     "title": "Polydisperse micrograin BSDF paper",
-    "description": "A Discrete Polydisperse Anisotropic BSDF Model based on the Micrograin Framework is available on HAL.",
+    "description": "Our paper A Discrete Polydisperse Anisotropic BSDF Model based on the Micrograin Framework has been accepted in Computer Graphics Forum.",
     "links": [
       {
         "label": "HAL version",
@@ -30,7 +30,7 @@
     "displayDate": "June 2025",
     "category": "Paper",
     "title": "EGSR 2025 paper accepted",
-    "description": "Importance Sampling of the Micrograin Visible NDF will appear at EGSR 2025 in Computer Graphics Forum.",
+    "description": "Our paper Importance Sampling of the Micrograin Visible NDF has been accepted at EGSR 2025.",
     "links": [
       {
         "label": "Paper and code",
@@ -69,7 +69,7 @@
     "displayDate": "May 2024",
     "category": "Paper",
     "title": "SIGGRAPH 2024 paper",
-    "description": "A Fully-correlated Anisotropic Micrograin BSDF Model was published in ACM Transactions on Graphics.",
+    "description": "Our paper A Fully-correlated Anisotropic Micrograin BSDF Model has been accepted at SIGGRAPH 2024.",
     "links": [
       {
         "label": "Author version",
