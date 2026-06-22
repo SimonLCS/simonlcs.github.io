@@ -6,8 +6,6 @@ const contentFiles = {
   portfolio: "./content/portfolio.json"
 };
 
-const bundledContent = window.siteContent || {};
-
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -26,12 +24,6 @@ const linkMarkup = (links = []) =>
     .join("");
 
 async function loadJson(path) {
-  const key = path.split("/").pop()?.replace(".json", "");
-
-  if (window.location.protocol === "file:" && key && Object.hasOwn(bundledContent, key)) {
-    return bundledContent[key];
-  }
-
   const response = await fetch(path);
   if (!response.ok) {
     throw new Error(`Could not load ${path}`);
