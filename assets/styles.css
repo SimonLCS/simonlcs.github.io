@@ -1043,7 +1043,8 @@ h3 {
   }
 
   .brand::after {
-    display: none;
+    display: block;
+    font-size: 0.55rem;
   }
 
   body.nav-open .nav-links {
