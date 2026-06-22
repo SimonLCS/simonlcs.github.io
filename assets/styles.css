@@ -12,6 +12,10 @@
   --signal: #68716b;
   --signal-soft: #e7e9e4;
   --highlight: #d9dcd5;
+  --warm: #bf7054;
+  --warm-soft: #f5dfd6;
+  --pointer-x: 50vw;
+  --pointer-y: 50vh;
   --radius: 7px;
   --shell: min(1120px, calc(100vw - 40px));
   --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -43,6 +47,45 @@ body::before {
   content: "";
   opacity: 0.12;
   pointer-events: none;
+}
+
+.chromatic-field {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+body.has-chromatic-aberration .chromatic-field {
+  opacity: 1;
+}
+
+.chromatic-field span {
+  position: absolute;
+  inset: -4px;
+  background: url("./perlin-contours.svg") center top / max(1100px, 100vw) auto no-repeat;
+  mask-image: radial-gradient(circle 190px at var(--pointer-x) var(--pointer-y), black 0, rgba(0, 0, 0, 0.86) 22%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle 190px at var(--pointer-x) var(--pointer-y), black 0, rgba(0, 0, 0, 0.86) 22%, transparent 72%);
+}
+
+.chromatic-field__red {
+  opacity: 0.42;
+  filter: brightness(0) saturate(100%) invert(43%) sepia(60%) saturate(1900%) hue-rotate(330deg) brightness(92%) contrast(91%);
+  transform: translate(-2px, 1px);
+}
+
+.chromatic-field__cyan {
+  opacity: 0.3;
+  filter: brightness(0) saturate(100%) invert(63%) sepia(38%) saturate(1022%) hue-rotate(133deg) brightness(90%) contrast(94%);
+  transform: translate(1px, -1px);
+}
+
+.chromatic-field__blue {
+  opacity: 0.34;
+  filter: brightness(0) saturate(100%) invert(31%) sepia(61%) saturate(2138%) hue-rotate(213deg) brightness(91%) contrast(96%);
+  transform: translate(3px, -2px);
 }
 
 .site-header,
@@ -153,7 +196,7 @@ a {
 .nav-links a:hover,
 .nav-links a:focus-visible,
 .nav-links a.is-active {
-  background: var(--ink);
+  background: linear-gradient(135deg, var(--ink), #6e5045);
   color: white;
   outline: none;
 }
@@ -266,24 +309,25 @@ h3 {
   border-radius: var(--radius);
   font-weight: 720;
   text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease, text-shadow 160ms ease;
 }
 
 .button {
   position: relative;
   padding: 0 18px;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .button.primary {
   border: 1px solid var(--accent);
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), #7b584c);
   box-shadow: 4px 4px 0 var(--ink);
   color: white;
 }
 
 .button.primary:hover,
 .button.primary:focus-visible {
-  box-shadow: 6px 6px 0 var(--ink);
+  border-color: var(--warm);
+  box-shadow: 6px 6px 0 var(--ink), -2px 0 0 rgba(226, 75, 72, 0.72), 2px 0 0 rgba(42, 162, 202, 0.7);
 }
 
 .button.secondary,
@@ -305,6 +349,33 @@ h3 {
 .contact-links a:hover,
 .footer-links a:hover {
   transform: translate(-1px, -2px);
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible,
+.card-links a:hover,
+.card-links a:focus-visible,
+.abstract-toggle:hover,
+.abstract-toggle:focus-visible {
+  border-color: var(--warm);
+  background: var(--warm-soft);
+}
+
+.button:hover,
+.button:focus-visible,
+.text-link:hover,
+.text-link:focus-visible,
+.card-links a:hover,
+.card-links a:focus-visible,
+.abstract-toggle:hover,
+.abstract-toggle:focus-visible,
+.contact-links a:hover,
+.contact-links a:focus-visible,
+.footer-links a:hover,
+.footer-links a:focus-visible,
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  text-shadow: -0.7px 0 rgba(226, 75, 72, 0.72), 0.7px 0 rgba(42, 162, 202, 0.72);
 }
 
 .intro-band,
@@ -378,9 +449,17 @@ h3 {
 .cv-panel:hover,
 .portfolio-card:hover,
 .news-item:hover {
-  border-color: #aeb5ae;
-  box-shadow: 0 12px 28px rgba(28, 37, 35, 0.1);
+  border-color: rgba(191, 112, 84, 0.7);
+  box-shadow: -2px 0 0 rgba(226, 75, 72, 0.42), 2px 0 0 rgba(42, 162, 202, 0.4), 0 12px 28px rgba(191, 112, 84, 0.14);
   transform: translateY(-3px);
+}
+
+.publication-card:hover h2,
+.portfolio-card:hover h2,
+.timeline-item:hover h2,
+.cv-panel:hover h2,
+.news-item:hover h3 {
+  text-shadow: -0.8px 0 rgba(226, 75, 72, 0.5), 0.8px 0 rgba(42, 162, 202, 0.48);
 }
 
 .timeline-date {
@@ -691,8 +770,8 @@ h3 {
 }
 
 .tag.loud {
-  border-color: var(--accent);
-  background: var(--accent);
+  border-color: var(--warm);
+  background: var(--warm);
   color: white;
 }
 

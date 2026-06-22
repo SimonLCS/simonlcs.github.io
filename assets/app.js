@@ -321,6 +321,31 @@ function setupNavigation() {
   });
 }
 
+function setupChromaticAberration() {
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+
+  const field = document.createElement("div");
+  field.className = "chromatic-field";
+  ["red", "cyan", "blue"].forEach((color) => {
+    const layer = document.createElement("span");
+    layer.className = `chromatic-field__${color}`;
+    field.append(layer);
+  });
+  document.body.append(field);
+
+  let frame = 0;
+  window.addEventListener("pointermove", (event) => {
+    if (frame) return;
+
+    frame = window.requestAnimationFrame(() => {
+      document.documentElement.style.setProperty("--pointer-x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--pointer-y", `${event.clientY}px`);
+      document.body.classList.add("has-chromatic-aberration");
+      frame = 0;
+    });
+  }, { passive: true });
+}
+
 function showLoadError() {
   $("#main").insertAdjacentHTML(
     "afterbegin",
@@ -351,6 +376,7 @@ async function init() {
     setupPublicationNavigator();
     setupAbstractToggles();
     setupNavigation();
+    setupChromaticAberration();
   } catch (error) {
     console.error(error);
     showLoadError();
