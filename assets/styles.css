@@ -220,8 +220,10 @@ a {
 
 .nav-links a {
   position: relative;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--ink);
   font-family: var(--mono);
   font-size: 0.82rem;
   font-weight: 700;
@@ -231,32 +233,10 @@ a {
   transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
 }
 
-.nav-links a::after {
-  position: absolute;
-  right: 9px;
-  bottom: 5px;
-  left: 9px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(226, 75, 72, 0.9), rgba(42, 162, 202, 0.9));
-  content: "";
-  opacity: 0;
-  transform: scaleX(0.45);
-  transition: opacity 160ms ease, transform 160ms ease;
-}
-
 .nav-links a:hover,
 .nav-links a:focus-visible,
 .nav-links a.is-active {
-  background: linear-gradient(135deg, var(--ink), #344440);
-  color: white;
   outline: none;
-}
-
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after,
-.nav-links a.is-active::after {
-  opacity: 1;
-  transform: scaleX(1);
 }
 
 .nav-toggle {
@@ -265,7 +245,8 @@ a {
   height: 42px;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.86);
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .nav-toggle span[aria-hidden="true"] {
@@ -289,7 +270,6 @@ a {
 
 .nav-toggle:hover,
 .nav-toggle:focus-visible {
-  border-color: var(--accent);
   box-shadow: -2px 0 0 rgba(226, 75, 72, 0.55), 2px 0 0 rgba(42, 162, 202, 0.52);
   outline: none;
 }
@@ -383,16 +363,9 @@ h3 {
 }
 
 .button.primary {
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  box-shadow: 4px 4px 0 var(--ink);
-  color: white;
-}
-
-.button.primary:hover,
-.button.primary:focus-visible {
-  border-color: var(--accent);
-  box-shadow: 6px 6px 0 var(--ink), -2px 0 0 rgba(226, 75, 72, 0.72), 2px 0 0 rgba(42, 162, 202, 0.7);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--ink);
 }
 
 .button.secondary,
@@ -416,16 +389,6 @@ h3 {
   transform: translate(-1px, -2px);
 }
 
-.button.secondary:hover,
-.button.secondary:focus-visible,
-.card-links a:hover,
-.card-links a:focus-visible,
-.abstract-toggle:hover,
-.abstract-toggle:focus-visible {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-}
-
 .button:hover,
 .button:focus-visible,
 .text-link:hover,
@@ -439,7 +402,8 @@ h3 {
 .footer-links a:hover,
 .footer-links a:focus-visible,
 .nav-links a:hover,
-.nav-links a:focus-visible {
+.nav-links a:focus-visible,
+.nav-links a.is-active {
   text-shadow: none;
   box-shadow: -2px 0 0 rgba(226, 75, 72, 0.68), 2px 0 0 rgba(42, 162, 202, 0.66);
 }
@@ -477,15 +441,8 @@ h3 {
 }
 
 .contact-band .contact-links a {
-  border-color: rgba(255, 255, 255, 0.38);
-  background: transparent;
-  color: white;
-}
-
-.contact-band .contact-links a:hover,
-.contact-band .contact-links a:focus-visible {
-  border-color: #d9dcd5;
-  background: #d9dcd5;
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.86);
   color: var(--ink);
 }
 
