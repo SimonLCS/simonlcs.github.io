@@ -652,6 +652,7 @@ h3 {
 .publication-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 34%);
+  align-items: stretch;
   gap: 24px;
 }
 
@@ -735,6 +736,15 @@ h3 {
 .publication-media {
   display: block;
   min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.publication-media img {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
 }
 
 .card-links {
