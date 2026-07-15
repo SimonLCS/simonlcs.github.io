@@ -1,11 +1,44 @@
 [
   {
+    "title": "Frequency-Aware Spatio-Angular Gaussians for Efficient Global Illumination Precomputation and Real-Time Rendering",
+    "bibtexKey": "Shah:2026:PBR_GS",
+    "kind": "Journal paper",
+    "venue": "EGSR, Computer Graphics Forum, 2026",
+    "authors": ["Ishaan Shah","Simon Lucas", "George Drettakis"],
+    "abstract": "Precomputation and efficient approximate material models are well-known approaches for achieving real-time rendering with global illumination. Recent research in radiance fields and in particular 3D Gaussian Splatting has demonstrated the power of Gaussian primitives both to represent radiance and for fast optimization. Inspired by these advances, we propose a new representation to precompute global illumination, by using 3D Gaussians for the spatial and spherical Gaussians for the directional component of lighting. Critically, we precompute and store incoming radiance, thus requiring the optimization of a spatially smooth function, and we exploit the properties of anisotropic spherical Gaussians for very fast evaluation during rendering. We introduce a frequency-aware sampling method, that guides both the placement of precomputed ground truth illumination samples and the placement of the Gaussians, both spatial and angular. Our approach provides very fast optimization, for a total precomputation time of less than 6 minutes for our test scenes, and better quality rendering than competing approaches at the same frame rates.",
+    "image": "assets/images/rep_image_egsr2026.jpg",
+    "imageAlt": "Teaser image for Frequency-Aware Spatio-Angular Gaussians for Efficient Global Illumination Precomputation and Real-Time Rendering",
+    "links": [
+      {
+        "label": "Project page",
+        "url": "https://repo-sam.inria.fr/nerphys/pbr_gs/"
+      }
+    ]
+  },
+  {
+    "title": "Correlated Smith Visibility from NDF-Derived Shapes",
+    "bibtexKey": "Lucas:2026:Smith",
+    "kind": "Workshop paper",
+    "venue": "MAM/MANER 2026",
+    "authors": ["Simon Lucas"],
+    "abstract": "Smith masking-shadowing is widely used in microfacet BRDFs to model the visibility in rough surfaces. Existing Smith models usually correlate visibility through height and or direction, but do not derive the directional correlation from the normal distribution function itself. In this work, we propose a first height-direction correlated Smith visibility term where the correlation is computed from an NDF-derived shape. For any isotropic NDF, we construct a representative shape whose normal distribution matches the target NDF. The NDF-dependent correlation term can then be recovered by measuring the overlap between the shadows cast by the NDF shape for the incoming and outgoing directions.",
+    "image": "assets/images/rep_image_mam2026.jpg",
+    "imageAlt": "Teaser image for Correlated Smith Visibility from NDF-Derived Shapes",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "assets/papers/correlated_smith_mam2026.pdf"
+      }
+    ]
+  },
+  {
     "title": "Intrinsic decomposition and editing of 3D Gaussian splats",
+    "bibtexKey": "Lanvin:2026:Intrinsic",
     "kind": "Journal paper",
     "venue": "Proceedings of the ACM on Computer Graphics and Interactive Techniques, 2026",
     "authors": ["Alexandre Lanvin", "Simon Lucas", "Jeffrey Hu", "Adrien Bousseau", "George Drettakis"],
     "abstract": "Intrinsic decomposition - which expresses image colors as the product of diffuse albedo and shading, possibly augmented with view-dependent residuals - has a long history in image editing as it enables the modification of object colors and textures without altering lighting. We extend intrinsic decomposition to radiance fields represented with Gaussian splatting by proposing solutions to three key aspects of such decomposition. First, we describe how to model the intrinsic decomposition as independent sets of Gaussian primitives, which allows each set to adapt to the characteristics of the layer it represents. Second, we present an optimization procedure guided by data-driven predictions to disentangle multi-view photographs of a scene into the aforementioned intrinsic sets. Finally, we provide an editing workflow where users modify the texture of planar surfaces simply by modifying the albedo of that surface in one image. Capturing this edit within the intrinsic radiance field allows re-rendering of the edited scene with plausible lighting under arbitrary viewpoints.",
-    "image": "https://thumb.ccsd.cnrs.fr/9913424/large",
+    "image": "assets/images/rep_image_i3d2026.jpg",
     "imageAlt": "First-page illustration for Intrinsic decomposition and editing of 3D Gaussian splats",
     "links": [
       {
@@ -20,11 +53,12 @@
   },
   {
     "title": "A Discrete Polydisperse Anisotropic BSDF Model based on the Micrograin Framework",
+    "bibtexKey": "Kewei:2026:Polydisperse",
     "kind": "Journal paper",
     "venue": "Computer Graphics Forum, 2026",
     "authors": ["Kewei Xu", "Simon Lucas", "Mickael Ribardiere", "Benjamin Bringier", "Pascal Barla"],
     "abstract": "We introduce a discrete polydisperse micrograin BSDF model for the rendering of porous surface materials composed of microscopic elements of different size, shape and reflectance distributed on a bulk medium. Our approach generalizes the anisotropic monodisperse micrograin model. We first reformulate it in a non-axis-aligned configuration, allowing for the later combination of different micrograin types elongated in arbitrary directions. We then extend the monodisperse model to the polydisperse case, deriving its three key components: (i) a general filling factor that controls the mix between micrograins and the bulk medium; (ii) an exact normal distribution function for surfaces composed of polydisperse micrograin distributions; and (iii) the corresponding fully-correlated shadowing and masking term. This results in an analytical single-scattering BSDF for discrete polydisperse surface materials, validated over ground truth simulations, for which we also derive a dedicated importance sampling procedure. Our model supports varying heights and anisotropy orientations of different micrograin types as input, giving additional control to simulate phenomena like retro-reflection from mixed materials, color mixture depending on lighting and observation directions, and multiple directions of anisotropy.",
-    "image": "https://thumb.ccsd.cnrs.fr/9907542/large",
+    "image": "assets/images/rep_image_eg2026.jpg",
     "imageAlt": "HAL thumbnail for A Discrete Polydisperse Anisotropic BSDF Model based on the Micrograin Framework",
     "links": [
       {
@@ -39,11 +73,12 @@
   },
   {
     "title": "Importance Sampling of the Micrograin Visible NDF",
+    "bibtexKey": "Lucas:2025:VNDF",
     "kind": "Journal paper",
     "venue": "EGSR, Computer Graphics Forum, 2025",
     "authors": ["Simon Lucas", "Romain Pacanowski", "Pascal Barla"],
     "abstract": "Importance sampling of visible normal distribution functions (vNDF) is a required ingredient for the efficient rendering of microfacet-based materials. In this paper, we explain how to sample the vNDF for the micrograin material model [LRPB23], which has been recently improved to handle height-normal correlations through a new Geometric Attenuation Factor (GAF) [LRPB24], leading to a stronger impact on appearance compared to the earlier Smith approximation. To this end, we make two contributions: we derive analytic expressions for the marginal and conditional cumulative distribution functions (CDFs) of the vNDF; we provide efficient methods for inverting these CDFs based respectively on a 2D lookup table and on the triangle-cut method [Hei20].",
-    "image": "https://simon-lucas.fr/wp-content/uploads/2025/06/rep_img_egsr2025-1024x320.jpg",
+    "image": "assets/images/rep_img_egsr2025-1024x320.jpg",
     "imageAlt": "Teaser image for importance sampling of the micrograin visible NDF",
     "links": [
       {
@@ -54,11 +89,12 @@
   },
   {
     "title": "A Micrograin Formalism for the Rendering of Porous Materials",
+    "bibtexKey": "Lucas:2024:Thesis",
     "kind": "Thesis",
     "venue": "PhD Thesis, University of Bordeaux, 2024",
     "authors": ["Simon Lucas"],
     "abstract": "This thesis focuses on the impact of microscopic structures on material appearance, with a particular emphasis on porous materials. We first evaluated existing appearance models by conducting light transport simulations on sphere aggregates representing porous volumes. We found that none of the existing models accurately matched the simulations, with most errors arising from surface effects. This opened the path to the development of a specialized Bidirectional Scattering Distribution Function (BSDF) model for rendering porous layers, such as those found on surfaces covered with dust, rust, or dirt. Our model extends the Trowbridge-Reitz (GGX) distribution to handle pores between elliptical opaque micrograins and introduces a view- and light-dependent filling factor to blend porous and base layers. By adding height-normal and light-view correlations in the masking and shadowing terms, our model produces realistic effects seen in real world materials that were previously hardly obtainable like retro-reflection and height-color correlations. To improve the rendering efficiency of micrograin materials, we introduce an efficient importance sampling routine for visible Normal Distribution Functions (vNDF). Through numerical simulations, we validate the accuracy of our model. Finally, our work provides a comprehensive formalism for rendering porous layers and opens many perspectives for future work.",
-    "image": "https://simon-lucas.fr/wp-content/uploads/2025/02/cap_these.png",
+    "image": "assets/images/cap_these.png",
     "imageAlt": "Thesis cover preview",
     "links": [
       {
@@ -69,11 +105,12 @@
   },
   {
     "title": "A Fully-correlated Anisotropic Micrograin BSDF Model",
+    "bibtexKey": "Lucas:2024:Fullycorrelated",
     "kind": "Journal paper",
     "venue": "SIGGRAPH, ACM Transactions on Graphics, 2024",
     "authors": ["Simon Lucas", "Mickael Ribardiere", "Romain Pacanowski", "Pascal Barla"],
     "abstract": "We introduce an improved version of the micrograin BSDF model [Lucas et al. 2023] for the rendering of anisotropic porous layers. Our approach leverages the properties of micrograins to take into account the correlation between their height and normal, as well as the correlation between the light and view directions. This allows us to derive an exact analytical expression for the Geometrical Attenuation Factor (GAF), summarizing shadowing and masking inside the porous layer. This fully-correlated GAF is then used to define appropriate mixing weights to blend the BSDFs of the porous and base layers. Furthermore, by generalizing the micrograins shape to anisotropy, combined with their fully-correlated GAF, our improved BSDF model produces effects specific to porous layers such as retro-reflection visible on dust layers at grazing angles or height and color correlation that can be found on rusty materials. Finally, we demonstrate very close matches between our BSDF model and light transport simulations realized with explicit instances of micrograins, thus validating our model.",
-    "image": "https://simon-lucas.fr/wp-content/uploads/2024/05/rep_image_sig-1024x368.jpg",
+    "image": "assets/images/rep_image_sig-1024x368.jpg",
     "imageAlt": "Rendered porous material results for the SIGGRAPH 2024 micrograin BSDF paper",
     "links": [
       {
@@ -84,11 +121,12 @@
   },
   {
     "title": "A Micrograin BSDF Model for the Rendering of Porous Layers",
+    "bibtexKey": "Lucas:2023:Micrograin",
     "kind": "Conference paper",
     "venue": "SIGGRAPH Asia, Conference Track, 2023",
     "authors": ["Simon Lucas", "Mickael Ribardiere", "Romain Pacanowski", "Pascal Barla"],
     "abstract": "We introduce a new BSDF model for the rendering of porous layers, as found on surfaces covered by dust, rust, dirt, or sprayed paint. Our approach is based on a distribution of elliptical opaque micrograins, extending the Trowbridge-Reitz (GGX) distribution [Trowbridge and Reitz 1975; Walter et al. 2007] to handle pores (i.e., spaces between micrograins). We use distance field statistics to derive the corresponding Normal Distribution Function (NDF) and Geometric Attenuation Factor (GAF), as well as a view- and light-dependent filling factor to blend between the porous and base layers. All the derived terms show excellent agreement when compared against numerical simulations. Our approach has several advantages compared to previous work [d'Eon et al. 2023; Merillou et al. 2000; Wang et al. 2022]. First, it decouples structural and reflectance parameters, leading to an analytical single-scattering formula regardless of the choice of micrograin reflectance. Second, we show that the classical texture maps (albedo, roughness, etc.) used for spatially-varying material parameters are easily retargeted to work with our model. Finally, the BRDF parameters of our model behave linearly, granting direct multi-scale rendering using classical mip mapping.",
-    "image": "https://simon-lucas.fr/wp-content/uploads/2023/09/rep_image-1024x683.jpg",
+    "image": "assets/images/rep_image-1024x683.jpg",
     "imageAlt": "Teaser render for the SIGGRAPH Asia 2023 micrograin BSDF model",
     "links": [
       {
@@ -103,12 +141,13 @@
   },
   {
     "title": "Analyse Numerique de Modeles de Materiaux Poreux",
+    "bibtexKey": "Lucas:2022:Poreux",
     "kind": "Workshop paper",
     "venue": "JFIG, Journees Francaises de l'Informatique Graphique, 2022",
     "award": "3rd Best Paper Award",
     "authors": ["Simon Lucas", "Romain Pacanowski", "Pascal Barla"],
     "abstract": "L'apparence des objets est impactée par leur structure microscopique. Ici nous nous intéressons à l'apparence de matériaux poreux. La présence de pores a été modélisée de deux manières dans les travaux existants : en modifiant l'état de surface d'un matériau, ou en modifiant ses propriétés volumiques. Il n'existe cependant pas de modèle de matériaux poreux suffisamment générique pour tenir compte à la fois des effets surfaciques et volumiques. Nous proposons dans cet article une étude de ces effets à l'aide de simulations du transport de la lumière. Cette approche permet de révéler les limitations des modèles existants, ainsi que des pistes prometteuses pour le développement futur d'un modèle de matériau suffisamment général pour tenir compte de variations de porosités et d'état de surface.",
-    "image": "https://simon-lucas.fr/wp-content/uploads/2023/09/teaser_jfig-1024x365.jpg",
+    "image": "assets/images/teaser_jfig-1024x365.jpg",
     "imageAlt": "Teaser image for porous material numerical analysis",
     "links": [
       {
@@ -119,11 +158,12 @@
   },
   {
     "title": "Real-Time Geometric Glint Anti-Aliasing with Normal Map Filtering",
+    "bibtexKey": "Chermain:2021:AAGlints",
     "kind": "Conference paper",
     "venue": "I3D, Proceedings of the ACM on Computer Graphics and Interactive Techniques, 2021",
     "authors": ["Xavier Chermain", "Simon Lucas", "Basile Sauvage", "Jean-Michel Dischler", "Carsten Dachsbacher"],
     "abstract": "Real-time geometric specular anti-aliasing is required when using a low number of pixel samples and high-frequency specular lobes. Several methods have been proposed for mono-lobe bidirectional reflection distribution functions (BRDFs), but none for multi-lobe BRDFs, e.g., a glinty BRDF. We present the first method for real-time geometric glint anti-aliasing (GGAA). It eliminates most of the inconsistent appearing and disappearing of glints on surfaces with significant curvatures during animations. The technique uses the glinty BRDF of Chermain et al. [2020] and leverages hardware GPU-filtering of textures to filter slope distributions on the fly. We also improve this glinty BRDF by adding a correlation factor of slope. This BRDF parameter allows convergence to normal distribution functions that are not aligned on the surface's axes. Above all, this parameter makes glint rendering compatible with normal map filtering using LEAN mapping. Using GGAA increases the rendering time from 0.6% to 4.2% and it requires 1/3 more memory due to MIP mapping of tabulated slope distributions. The results are compared with references using a thousand samples per pixel.",
-    "image": "https://simon-lucas.fr/wp-content/uploads/2021/03/i3D2021-1024x395.png",
+    "image": "assets/images/i3D2021-1024x395.png",
     "imageAlt": "Rendered glint anti-aliasing comparison for I3D 2021",
     "links": [
       {

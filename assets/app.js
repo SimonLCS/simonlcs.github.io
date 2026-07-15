@@ -2,6 +2,7 @@ const contentFiles = {
   site: "./content/site.json",
   news: "./content/news.json",
   publications: "./content/publications.json",
+  bibtex: "./content/bibtex.bib",
   cv: "./content/cv.json",
   portfolio: "./content/portfolio.json"
 };
@@ -29,6 +30,36 @@ async function loadJson(path) {
     throw new Error(`Could not load ${path}`);
   }
   return response.json();
+}
+
+async function loadText(path) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Could not load ${path}`);
+  }
+  return response.text();
+}
+
+function parseBibtexEntries(bibtex) {
+  const entries = new Map();
+  const entryStart = /@\w+\s*\{\s*([^,\s]+)\s*,/g;
+  let match;
+
+  while ((match = entryStart.exec(bibtex))) {
+    let depth = 1;
+    let cursor = entryStart.lastIndex;
+
+    while (cursor < bibtex.length && depth > 0) {
+      if (bibtex[cursor] === "{") depth += 1;
+      if (bibtex[cursor] === "}") depth -= 1;
+      cursor += 1;
+    }
+
+    if (depth === 0) entries.set(match[1], bibtex.slice(match.index, cursor).trim());
+    entryStart.lastIndex = cursor;
+  }
+
+  return entries;
 }
 
 function setText(selector, value) {
@@ -61,9 +92,10 @@ function publicationYear(publication) {
   return publication.venue.match(/\b(?:19|20)\d{2}\b/)?.[0] || "—";
 }
 
-function publicationCard(publication, index) {
+function publicationCard(publication, index, citations) {
   const publicationId = `publication-${index + 1}`;
   const abstractId = `${publicationId}-abstract`;
+  const citation = citations.get(publication.bibtexKey);
 
   return `
     <article class="publication-card" id="${publicationId}" data-publication-card>
@@ -84,6 +116,7 @@ function publicationCard(publication, index) {
           <div class="card-links">
             <button class="abstract-toggle" type="button" data-abstract-toggle aria-controls="${abstractId}" aria-expanded="false">Abstract</button>
             ${linkMarkup(publication.links)}
+            ${citation ? `<button class="cite-button" type="button" data-citation-key="${escapeHtml(publication.bibtexKey)}">Cite</button>` : ""}
           </div>
         </div>
       </div>
@@ -110,7 +143,7 @@ function publicationIndexGroups(publications) {
   }, []);
 }
 
-function renderPublications(publications) {
+function renderPublications(publications, citations) {
   const target = $("[data-publications]");
   if (!target) return;
 
@@ -142,10 +175,54 @@ function renderPublications(publications) {
         </div>
       </aside>
       <div class="publication-cards">
-        ${publications.map(publicationCard).join("")}
+        ${publications.map((publication, index) => publicationCard(publication, index, citations)).join("")}
       </div>
     </div>
   `;
+}
+
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch (error) {
+      console.warn("Clipboard API unavailable; using fallback.", error);
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.append(textarea);
+  textarea.select();
+  const copied = document.execCommand("copy");
+  textarea.remove();
+  if (!copied) throw new Error("Copy command was unsuccessful");
+}
+
+function setupCitationButtons(citations) {
+  $$('[data-citation-key]').forEach((button) => {
+    const defaultLabel = button.textContent;
+
+    button.addEventListener("click", async () => {
+      const citation = citations.get(button.dataset.citationKey);
+      if (!citation) return;
+
+      try {
+        await copyText(citation);
+        button.textContent = "Copied!";
+      } catch (error) {
+        console.error("Could not copy citation", error);
+        button.textContent = "Copy failed";
+      }
+
+      window.setTimeout(() => {
+        button.textContent = defaultLabel;
+      }, 1800);
+    });
+  });
 }
 
 function setupPublicationNavigator() {
@@ -360,7 +437,14 @@ async function init() {
 
     const contentLoaders = [];
     if ($("[data-publications]")) {
-      contentLoaders.push(loadJson(contentFiles.publications).then(renderPublications));
+      contentLoaders.push(Promise.all([
+        loadJson(contentFiles.publications),
+        loadText(contentFiles.bibtex)
+      ]).then(([publications, bibtex]) => {
+        const citations = parseBibtexEntries(bibtex);
+        renderPublications(publications, citations);
+        setupCitationButtons(citations);
+      }));
     }
     if ($("[data-news-preview]")) {
       contentLoaders.push(loadJson(contentFiles.news).then(renderNews));
