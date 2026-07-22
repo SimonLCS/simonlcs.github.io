@@ -1,0 +1,78 @@
+% LaTeX CV template filled by scripts/generate_cv.py.
+% Variant: @@CV_KIND@@.
+\documentclass[10pt,a4paper,ragged2e]{altacv}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{left=1.25cm,right=1.25cm,top=1.15cm,bottom=1.15cm}
+
+\definecolor{DeepBlue}{HTML}{003EFF}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{37474F}
+\colorlet{heading}{DeepBlue}
+\colorlet{accent}{DeepBlue}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent}
+\AtBeginEnvironment{itemize}{\small\setlength{\itemsep}{1pt}}
+\addbibresource{@@BIB_RESOURCE@@}
+
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \ifitemannotation{highlight}{\textbf{#1}}{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifitemannotation{highlight}{\textbf{#1}}{#1}}
+
+@@ABSTRACT_SETUP@@
+
+\begin{document}
+\name{Simon Lucas}
+\tagline{@@ROLE@@}
+\personalinfo{%
+  @@EMAIL_LINE@@
+  \location{Sophia-Antipolis, France}
+  \homepage{\href{@@HOMEPAGE@@}{simon-lucas.fr}}
+}
+
+\makecvheader
+
+@@RESEARCH_INTERESTS@@
+
+\cvsection{Education}
+\cvevent{Ph.D.}{University of Bordeaux, Inria Bordeaux}{October 2021 -- December 2024}{France, Bordeaux}
+\par Thesis title: \emph{A micrograin formalism for the rendering of porous materials.}
+\par Supervisors: Pascal Barla, Romain Pacanowski
+
+\cvevent{M.Sc. Computer Science, ``Image and 3D''}{University of Strasbourg}{September 2019 -- August 2021}{France, Strasbourg}
+\par Thesis title: \emph{Procedural Texture Synthesis using Tiling and Blending}.
+\par Supervisors: Basile Sauvage, Xavier Chermain
+\par + \href{https://mathinfo.unistra.fr/formations/cursus-master-ingenierie-en-informatique/odf-parcours-cursus-master-ingenierie-cmi-informatique-systemes-et-reseaux-PR1233-18114/}{Master of Engineering -- Computer Science, Image, Virtual Reality, Interaction and Games}
+
+\cvevent{B.Sc. Computer Science}{University of Strasbourg}{September 2016 -- June 2019}{France, Strasbourg}
+\par + \href{https://mathinfo.unistra.fr/formations/cursus-master-ingenierie-en-informatique/odf-parcours-cursus-master-ingenierie-cmi-informatique-systemes-et-reseaux-PR1233-18114/}{Master of Engineering -- Computer Science, Image, Virtual Reality, Interaction and Games}
+
+\cvevent{Scientific Baccalaur\'eat}{Lyc\'ee Marc Chagall}{2016}{France, Reims}
+
+\cvsection{Work Experience}
+@@EXPERIENCE@@
+
+\clearpage
+\cvsection{Publications}
+\nocite{*}
+\vspace{-5mm}
+\printbibliography[title={Journal Articles\medskip},type=article]
+\vspace{-5mm}
+\printbibliography[title={Conference Proceedings\medskip},type=inproceedings]
+\vspace{-5mm}
+\printbibliography[title={Thesis\medskip},type=thesis]
+
+@@MISC_PAGE_BREAK@@
+@@MISC_COLUMNS@@
+
+\end{document}
