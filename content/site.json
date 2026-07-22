@@ -1,6 +1,7 @@
 {
   "title": "Simon Lucas - Computer Graphics Researcher",
   "role": "Postdoctoral Researcher in Computer Graphics",
+  "researchInterestsTitle": "Research Interests",
   "bio": "I am a postdoctoral researcher at Inria Sophia-Antipolis in the GraphDeco team. My research explores how microscopic structure shapes material appearance, from porous layers and micrograin models to efficient sampling for real-time and physically based rendering.",
   "portrait": "assets/images/photo_moi-e1606601269958-768x817.jpg",
   "portraitAlt": "Portrait of Simon Lucas",

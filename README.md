@@ -16,6 +16,34 @@ Then open `http://localhost:4173`.
 npm run check
 ```
 
+## LaTeX CV
+
+Generate the standard CV from the same JSON data as the website:
+
+```bash
+python scripts/generate_cv.py
+```
+
+Include publication abstracts in an extended CV:
+
+```bash
+python scripts/generate_cv.py --extended
+```
+
+The files are written to `generated_cv/` together with the AltaCV class and generated bibliography needed to compile them. Use `--output path/to/cv.tex` to choose another filename. The LaTeX layout and fixed education content live in `templates/cv_template.tex`; the Python script fills its named `@@...@@` placeholders from the website data. Publication metadata comes from `content/bibtex.bib`; the extended version augments its generated copy with abstracts from `content/publications.json`.
+
+Because the publications use BibLaTeX, compile a generated CV with Biber between LaTeX passes:
+
+```bash
+cd generated_cv
+pdflatex simon_lucas.tex
+biber simon_lucas
+pdflatex simon_lucas.tex
+pdflatex simon_lucas.tex
+```
+
+Use `simon_lucas_extended` instead for the extended version.
+
 ## Editing content
 
 - Profile, portrait, contact links: `content/site.json`

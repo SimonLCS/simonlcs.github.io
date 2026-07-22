@@ -873,6 +873,20 @@ h3 {
   font-size: 0.9rem;
 }
 
+.cv-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+
+.cv-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
 .cv-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);

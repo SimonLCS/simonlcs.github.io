@@ -4,7 +4,7 @@
       "date": "2025 - present",
       "title": "Postdoctoral Researcher",
       "place": "Inria Sophia-Antipolis, GraphDeco team",
-      "details": ["Physically based rendering", "Light transport", "Real-time rendering"]
+      "details": ["Physically based rendering", "Light transport", "Real-time rendering", "Novel View Synthesis", "Relighting"]
     },
     {
       "date": "2021 - 2024",
@@ -54,7 +54,7 @@
   "sidebars": [
     {
       "title": "Reviewing",
-      "items": ["SIGGRAPH 2024", "I3D 2024"]
+      "items": ["SIGGRAPH 2024, 2026", "SIGGRAPH ASIA 2025", "I3D 2024"]
     },
     {
       "title": "Skills",
